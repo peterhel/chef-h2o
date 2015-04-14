@@ -1,3 +1,5 @@
+# to find out the configuration commands, run: h2o --help
+
 listen: 8080
 listen:
   port: 8081
@@ -14,8 +16,8 @@ hosts:
     listen:
       port: 8081
       ssl:
-	    certificate-file: /etc/ssl/certs/h2o_alternate.crt
-    	key-file: /etc/ssl/private/h2o_alternate.key
+        certificate-file: /etc/ssl/certs/h2o_alternate.crt
+        key-file: /etc/ssl/private/h2o_alternate.key
     paths:
       /:
         file.dir: /etc/h2o/doc_root.alternate

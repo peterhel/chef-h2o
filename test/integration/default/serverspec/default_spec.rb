@@ -6,10 +6,10 @@ describe 'garbo::default' do
   # http://serverspec.org/resource_types.html
 
   it "h2o is listening on port 8080" do
-    expect(port(443)).to be_listening
+    expect(port(8080)).to be_listening
   end
   it "h2o is listening on port 8081" do
-    expect(port(80)).to be_listening
+    expect(port(8081)).to be_listening
   end
 
   # describe command('curl https://localhost/assets/images/logo.svg -k -I --compressed 2>&1 | grep Access-Control-Allow-Origin') do
