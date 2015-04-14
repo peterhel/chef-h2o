@@ -1,0 +1,7 @@
+name             'cookbook-h2o'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures cookbook-h2o'
+long_description 'Installs/Configures cookbook-h2o'
+version          '0.1.0'
