@@ -32,11 +32,14 @@ end
 directory "/etc/h2o"
 directory "/var/log/h2o"
 
-template '/etc/h2o/h2o.conf'
+template '/etc/h2o/h2o.conf' do 
+	variables :h20 => node['h2o']
+end
 
 template '/etc/init.d/h2o' do
 	source 'init_d_h2o.erb'
-	mode '0755'
+ 	mode '0755'
+ 	notifies :reload, 'service[h2o]', :delayed
 end
 
 remote_directory '/etc/h2o/doc_root' do
@@ -47,27 +50,14 @@ remote_directory '/etc/h2o/doc_root' do
   source 'examples/doc_root'
 end
 
-remote_directory '/etc/h2o/doc_root.alternate' do
-  files_mode '0440'
-  files_owner 'root'
-  mode '0770'
-  owner 'root'
-  source 'examples/doc_root.alternate'
-end
-
 cookbook_file '/etc/ssl/certs/h2o.crt' do
 	source 'examples/h2o/server.crt'
+ 	notifies :reload, 'service[h2o]', :delayed
 end
 
 cookbook_file '/etc/ssl/private/h2o.key' do
 	source 'examples/h2o/server.key'
-end
-
-cookbook_file '/etc/ssl/certs/h2o_alternate.crt' do
-	source 'examples/h2o/alternate.crt'
-end
-cookbook_file '/etc/ssl/private/h2o_alternate.key' do
-	source 'examples/h2o/alternate.key'
+ 	notifies :reload, 'service[h2o]', :delayed
 end
 
 execute 'update-rc.d h2o defaults'
