@@ -2,21 +2,21 @@ listen: 8080
 listen:
   port: 8081
   ssl:
-    certificate-file: examples/h2o/server.crt
-    key-file: examples/h2o/server.key
+    certificate-file: /etc/ssl/certs/h2o.crt
+    key-file: /etc/ssl/private/h2o.key
 hosts:
   "127.0.0.1.xip.io:8080":
     paths:
       /:
-        file.dir: examples/doc_root
-    access-log: /dev/stdout
+        file.dir: /etc/h2o/doc_root
+    access-log: /var/log/h2o/access.log
   "alternate.127.0.0.1.xip.io:8081":
     listen:
       port: 8081
       ssl:
-        certificate-file: examples/h2o/alternate.crt
-        key-file: examples/h2o/alternate.key
+	    certificate-file: /etc/ssl/certs/h2o_alternate.crt
+    	key-file: /etc/ssl/private/h2o_alternate.key
     paths:
       /:
-        file.dir: examples/doc_root.alternate
-    access-log: /dev/stdout
+        file.dir: /etc/h2o/doc_root.alternate
+    access-log: /var/log/h2o/access.log

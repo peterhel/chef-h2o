@@ -28,3 +28,23 @@ end
 execute 'sudo make install' do
 	cwd '/usr/src/h2o'
 end
+
+directory "/etc/h2o"
+directory "/var/log/h2o"
+
+template '/etc/h2o/h2o.conf'
+template '/etc/init.d/h2o' do
+	source 'init_d_h2o.erb'
+end
+
+file '/etc/ssl/certs/h2o.crt'
+file '/etc/ssl/private/h2o.key'
+
+file '/etc/ssl/certs/h2o_alternate.crt'
+file '/etc/ssl/private/h2o_alternate.key'
+
+execute 'update-rc.d h2o defaults'
+
+service 'h2o' do
+	action [:start, :enable]
+end
