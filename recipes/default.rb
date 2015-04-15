@@ -50,16 +50,6 @@ remote_directory '/etc/h2o/doc_root' do
   source 'examples/doc_root'
 end
 
-cookbook_file '/etc/ssl/certs/h2o.crt' do
-	source 'examples/h2o/server.crt'
- 	notifies :reload, 'service[h2o]', :delayed
-end
-
-cookbook_file '/etc/ssl/private/h2o.key' do
-	source 'examples/h2o/server.key'
- 	notifies :reload, 'service[h2o]', :delayed
-end
-
 execute 'update-rc.d h2o defaults'
 
 service 'h2o' do

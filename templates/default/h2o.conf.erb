@@ -1,18 +1,8 @@
 # to find out the configuration commands, run: h2o --help
 
 listen: 8080
-listen:
-  port: 8443
-  ssl:
-    certificate-file: <%= @h2o['certificate'] %>
-    key-file: <%= @h2o['private_key'] %>
 hosts:
   "127.0.0.1.xip.io:8080":
-    paths:
-      /:
-        file.dir: /etc/h2o/doc_root
-    access-log: /var/log/h2o/access.log
-  "127.0.0.1.xip.io:8443":
     paths:
       /:
         file.dir: /etc/h2o/doc_root
