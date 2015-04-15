@@ -11,7 +11,7 @@ include_recipe 'apt'
 include_recipe 'git'
 #include_recipe 'cmake'
 
-package 'cmake make gcc g++ libyaml-dev libssl-dev pkg-config curl'
+package ['cmake', 'make', 'gcc', 'g++', 'libyaml-dev', 'libssl-dev', 'pkg-config', 'curl']
 
 git '/usr/src/h2o' do
   repository 'https://github.com/h2o/h2o.git'
